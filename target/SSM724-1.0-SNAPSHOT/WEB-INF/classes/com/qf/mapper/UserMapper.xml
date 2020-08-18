@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.UserDao">
+
+    <!--通过uid得到该uid对应的User对象-->
+    <select id="selectAllUser" resultType="User">
+    select * from users
+    </select>
+
+    <!--通过uid得到该uid对应的User对象-->
+    <select id="getAllSortUsers" resultType="User">
+    select * from users order by ${username}
+    </select>
+
+    <select id="selectUserByUid" resultType="User">
+        select *from users where uid=#{uid}
+    </select>
+
+    <delete id="delete">
+        delete from users where uid=#{uid}
+    </delete>
+
+    <update id="update">
+        update users set username=#{username},password=#{password},sex=#{sex},tel=#{tel} where uid=#{uid}
+    </update>
+
+    <insert id="insert">
+    insert into users values(null, #{username}, #{password}, #{sex}, #{tel})
+  </insert>
+</mapper>
